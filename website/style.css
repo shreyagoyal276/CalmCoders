@@ -67,3 +67,107 @@ button {
 .soft-purple {
   color: #ebabf6;
 }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 1s ease-in-out;
+}
+
+h1 {
+  margin-bottom: 0.2rem;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  resize: none;
+  outline: none;
+  box-sizing: border-box; 
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+button:hover {
+  background-color: #574fd6;
+}
+
+#output {
+  margin-top: 2rem;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
+
+.cleared {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #2e7d32;
+}
+
+#quote {
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: #555;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+#moodSelector {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.mood-btn {
+  font-size: 1.8rem;
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mood-btn:hover {
+  transform: scale(1.1);
+  border-color: #ccc;
+}
+
+.mood-btn.selected {
+  border-color: #4caf50;
+  background-color: #f0fff4;
+}
+
+.express-heading {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 4rem;
+  color: #0a66d6;
+  font-family: 'Segoe UI', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  z-index: 5;
+}
