@@ -12,7 +12,7 @@
   <div class="container">
     <h1>🧠 MindDump</h1>
     <p class="tagline">Write it. Dump it. Breathe.</p>
-    
+
     <textarea id="thoughtInput" placeholder="Write your thoughts here..."></textarea>
 
     <div id="moodSelector">
@@ -21,10 +21,35 @@
       <button class="mood-btn" data-mood="forest" title="Forest">🌿</button>
     </div>
     <p id="auraText">Select the aura you want to feel relaxed</p>
-
     
     <button id="dumpBtn">Dump It</button>
     
-    <script src="script.js"></script>
+    <div id="output" class="hidden">
+      <div id="breathCircle"></div>
+      <p id="breatheText" style="font-size: 1.2rem; color: #007bff;"></p>
+      <p class="cleared">Your thoughts have been released. ✨</p>
+      <p id="quote"></p>
+      <p style="color: white; font-size: 1.2rem; margin-top: 1rem;">Breathe with the circle...</p>
+    </div>
+
+    <div id="bodyScan" class="hidden">
+      <p class="cleared" style="margin-bottom: 1rem;">Now, let’s try a short body scan 🧘‍♀️</p>
+      <p id="scanText" style="color: white; font-size: 1.2rem;"></p>
+    </div>
+  </div>
+
+ 
+  <div id="ytPlayer" style="display: none;">
+    <iframe
+      id="ytFrame"
+      width="0"
+      height="0"
+      src=""
+      frameborder="0"
+      allow="autoplay"
+    ></iframe>
+  </div>
+ 
+  <script src="script.js"></script>
 </body>
 </html>
