@@ -8,7 +8,6 @@ const moodSelector = document.getElementById("moodSelector");
 const moodButtons = document.querySelectorAll(".mood-btn");
 const auraText = document.getElementById("auraText");
 
-
 const moodAudio = {
   rain: "cljv53Wvnx4",
   fireplace: "eyU3bRy2x44",
