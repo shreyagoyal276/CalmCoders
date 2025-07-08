@@ -24,6 +24,7 @@ moodButtons.forEach(btn => {
   });
 });
 
+
 const phases = ["Inhale...", "Hold...", "Exhale...", "Hold..."];
 let phaseIndex = 0;
 
@@ -52,6 +53,28 @@ function displayQuoteAnimated(text) {
   });
 }
 
+
+function askForBodyScan() {
+  const confirmBox = document.createElement("div");
+  confirmBox.classList.add("modal");
+  confirmBox.innerHTML = `
+    <div style="background: white; padding: 20px; border-radius: 10px; text-align: center;">
+      <p style="font-size: 1.2rem; color: #333;">Would you like to continue with a mini body relaxation session?</p>
+      <button id="yesBtn" style="margin: 10px;">Yes</button>
+      <button id="noBtn" style="margin: 10px;">No</button>
+    </div>
+  `;
+  document.body.appendChild(confirmBox);
+
+  document.getElementById("yesBtn").addEventListener("click", () => {
+    window.location.href = "relax.html"; // Redirect to relax page
+  });
+
+  document.getElementById("noBtn").addEventListener("click", () => {
+    confirmBox.remove();
+  });
+}
+
 dumpBtn.addEventListener("click", () => {
   const thought = thoughtInput.value.trim();
   if (!thought) {
@@ -64,6 +87,7 @@ dumpBtn.addEventListener("click", () => {
   moodSelector.style.display = "none";
   auraText.style.display = "none";
 
+ 
   const videoId = moodAudio[selectedMood];
   ytFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}`;
 
@@ -76,7 +100,7 @@ dumpBtn.addEventListener("click", () => {
     output.classList.remove("hidden");
 
     displayQuoteAnimated(getRandomQuote());
-    
+
     let breatheCount = 0;
     const breatheInterval = setInterval(() => {
       breatheText.textContent = phases[phaseIndex];
