@@ -1,97 +1,138 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    background: #f0f4f8;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  h1 {
-    margin-bottom: 10px;
-    color: #333;
-    text-align: center;
-  }
-  
-  #emotionWheel {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 5px;
-    margin-bottom: 20px;
-    user-select: none;
-  }
-  
-  .emotionSegment {
-    background: #b3d4fc;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s;
-    padding: 10px;
-    text-align: center;
-    user-select: none;
-  }
-  
-  .emotionSegment:hover, .emotionSegment.selected {
-    background: #4a90e2;
-    color: white;
-  }
-  
-  #promptArea {
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 10px;
-  }
-  
-  #promptArea textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    resize: vertical;
-  }
-  
-  #detectBtn {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-bottom: 20px;
-    transition: background-color 0.3s;
-  }
-  
-  #detectBtn:hover {
-    background-color: #357abd;
-  }
-  
-  #result {
-    max-width: 600px;
-    background: white;
-    padding: 15px 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  }
-  
-  #result h2 {
-    margin-top: 0;
-    color: #333;
-  }
-  
-  #detectedEmotion {
-    font-weight: 700;
-    color: #4a90e2;
-  }
-  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+  text-align: center;
+  font-size: 2rem;
+}
+
+/* Emotion wheel */
+#emotionWheel {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 30px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.emotionSegment {
+  background: #d0e8ff;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px;
+  user-select: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.emotionSegment:hover, .emotionSegment.selected {
+  background: #4a90e2;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #4a90e2aa;
+}
+
+/* Prompt Area */
+#promptArea {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+#promptArea label {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+#promptArea textarea {
+  width: 100%;
+  height: 120px;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  margin-top: 8px;
+  background: #fff;
+}
+
+/* Action Section (button + result box) */
+#actionSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Button */
+#detectBtn {
+  padding: 12px 40px;
+  font-size: 1rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#detectBtn:hover {
+  background-color: #357abd;
+  transform: scale(1.05);
+}
+
+/* Result box */
+#result {
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 20px 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  backdrop-filter: blur(12px);
+  margin-top: 10px;
+  text-align: center;
+}
+
+#result h2 {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 1.3rem;
+}
+
+#detectedEmotion {
+  font-weight: 700;
+  color: #4a90e2;
+  font-size: 1.2rem;
+}

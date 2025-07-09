@@ -7,39 +7,40 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='explore.css') }}" />
 </head>
 <body>
-    <h1>Explore Phase: Emotion Wheel & Self Exploration</h1>
-  
-    <div id="emotionWheel" aria-label="Emotion Wheel">
-      <div class="emotionSegment" data-emotion="Joy">Joy</div>
-      <div class="emotionSegment" data-emotion="Trust">Trust</div>
-      <div class="emotionSegment" data-emotion="Fear">Fear</div>
-      <div class="emotionSegment" data-emotion="Surprise">Surprise</div>
-      <div class="emotionSegment" data-emotion="Sadness">Sadness</div>
-      <div class="emotionSegment" data-emotion="Disgust">Disgust</div>
-      <div class="emotionSegment" data-emotion="Anger">Anger</div>
-      <div class="emotionSegment" data-emotion="Anticipation">Anticipation</div>
-      <div class="emotionSegment" data-emotion="Calm">Calm</div>
+  <h1>Explore Phase: Emotion Wheel & Self Exploration</h1>
+
+  <div id="emotionWheel" aria-label="Emotion Wheel">
+    <div class="emotionSegment" data-emotion="Joy">Joy</div>
+    <div class="emotionSegment" data-emotion="Trust">Trust</div>
+    <div class="emotionSegment" data-emotion="Fear">Fear</div>
+    <div class="emotionSegment" data-emotion="Surprise">Surprise</div>
+    <div class="emotionSegment" data-emotion="Sadness">Sadness</div>
+    <div class="emotionSegment" data-emotion="Disgust">Disgust</div>
+    <div class="emotionSegment" data-emotion="Anger">Anger</div>
+    <div class="emotionSegment" data-emotion="Anticipation">Anticipation</div>
+    <div class="emotionSegment" data-emotion="Calm">Calm</div>
+  </div>
+
+  <form method="POST" action="{{ url_for('explore') }}" id="exploreForm">
+    <div id="promptArea">
+      <label for="userInput">Describe how you're feeling or what you are experiencing:</label><br/>
+      <textarea name="user_input" id="userInput" placeholder="Write your thoughts here...">{{ user_text or '' }}</textarea>
     </div>
-  
-    <form method="POST" action="{{ url_for('explore') }}" id="exploreForm">
-      <div id="promptArea">
-        <label for="userInput">Describe how you're feeling or what you are experiencing:</label><br/>
-        <textarea name="user_input" id="userInput" placeholder="Write your thoughts here...">{{ user_text or '' }}</textarea>
-      </div>
-  
-      <input type="hidden" name="selected_emotion" id="selectedEmotionInput" value="" />
-  
+
+    <input type="hidden" name="selected_emotion" id="selectedEmotionInput" value="" />
+
+    <div id="actionSection">
       <button type="submit" id="detectBtn">Detect Emotion</button>
-    </form>
-  
-    <div id="result" aria-live="polite" role="region">
-      <h2>Detected Emotion: <span id="detectedEmotion">{{ detected_emotion or "None" }}</span></h2>
-      {% if user_text %}
-      <p>You described: "{{ user_text }}"</p>
-      {% endif %}
+
+      <div id="result" aria-live="polite" role="region">
+        <h2>Detected Emotion: <span id="detectedEmotion">{{ detected_emotion or "None" }}</span></h2>
+        {% if user_text %}
+        <p>You described: "{{ user_text }}"</p>
+        {% endif %}
+      </div>
     </div>
-  
-    <script src="{{ url_for('static', filename='explore.js') }}"></script>
-  </body>
-  
+  </form>
+
+  <script src="{{ url_for('static', filename='explore.js') }}"></script>
+</body>
 </html>
