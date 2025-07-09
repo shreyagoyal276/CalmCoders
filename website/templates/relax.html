@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Relaxation Session</title>
-  <link rel="stylesheet" href="../static/relax.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='relax.css') }}">
 
 </head>
 <body class="relax-bg">
@@ -30,7 +30,7 @@
   Your browser does not support the audio element.
 </audio>
 
-<script src="../static/relax.js"></script>
+<script src="{{ url_for('static', filename='relax.js') }}"></script>
 
 </body>
 </html>
