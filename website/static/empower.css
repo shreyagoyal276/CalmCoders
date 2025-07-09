@@ -86,6 +86,7 @@ h1 {
   background: rgba(230, 244, 255, 0.6);
   padding: 20px;
   border-left: 6px solid #4a90e2;
+  border-right: 6px solid #4a90e2;
   border-radius: 12px;
   margin: 20px 0;
   color: #1e293b;
@@ -109,6 +110,9 @@ h1 {
   text-align: left;
   background: rgba(255, 255, 255, 0.55);
   border-radius: 15px;
+ 
+  border-left: 6px solid #ff7cb0;
+  border-right: 6px solid #ff7cb0;
   padding: 20px;
   margin-top: 20px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.05);
