@@ -96,22 +96,22 @@ h1 {
   margin-top: 20px;
 }
 
-/* Button */
 #detectBtn {
-  padding: 12px 40px;
-  font-size: 1rem;
-  background-color: #4a90e2;
+  background-color: #391300;
   color: white;
   border: none;
-  border-radius: 10px;
+  padding: 12px 25px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 1rem auto;
+  display: block;
+  transition: background-color 0.3s ease;
 }
 
 #detectBtn:hover {
-  background-color: #357abd;
-  transform: scale(1.05);
+  background-color: #4f46e5;
 }
+
 
 /* Result box */
 #result {
@@ -133,6 +133,59 @@ h1 {
 
 #detectedEmotion {
   font-weight: 700;
-  color: #4a90e2;
+  color: #4ad3e2;
   font-size: 1.2rem;
 }
+
+
+.emotionSegment[data-emotion="Joy"] {
+  background-color: #d0e7ff; /* pastel soft blue */
+  color: #2563eb; /* calm blue text */
+}
+
+.emotionSegment[data-emotion="Trust"] {
+  background-color: #d9f7ee; /* pastel minty green */
+  color: #059669; /* soft green */
+}
+
+.emotionSegment[data-emotion="Fear"] {
+  background-color: #ffe1f0; /* pastel soft pink */
+  color: #db2777; /* gentle pinkish */
+}
+
+.emotionSegment[data-emotion="Surprise"] {
+  background-color: #e6e0ff; /* pastel lavender */
+  color: #7c3aed; /* soft purple */
+}
+
+.emotionSegment[data-emotion="Sadness"] {
+  background-color: #cfe3f4;
+  color: #2563eb;
+}
+
+.emotionSegment[data-emotion="Disgust"] {
+  background-color: #d0f0c0;
+  color: #059669;
+}
+
+.emotionSegment[data-emotion="Anger"] {
+  background-color: #ffd6d6;
+  color: #db2777;
+}
+
+.emotionSegment[data-emotion="Anticipation"] {
+  background-color: #fff4cc;
+  color: #f59e0b;
+}
+
+.emotionSegment[data-emotion="Calm"] {
+  background-color: #e6f0ff;
+  color: #2563eb;
+}
+
+  /* Hover effect */
+  .emotionSegment:hover:not(.selected) {
+    background-color: #e5efff;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+  }

@@ -27,19 +27,17 @@
       <textarea name="user_input" id="userInput" placeholder="Write your thoughts here...">{{ user_text or '' }}</textarea>
     </div>
 
-    <input type="hidden" name="selected_emotion" id="selectedEmotionInput" value="" />
+    <input type="hidden" name="selected_emotion" id="selectedEmotionInput" value="{{ detected_emotion or '' }}" />
 
-    <div id="actionSection">
-      <button type="submit" id="detectBtn">Detect Emotion</button>
-
-      <div id="result" aria-live="polite" role="region">
-        <h2>Detected Emotion: <span id="detectedEmotion">{{ detected_emotion or "None" }}</span></h2>
-        {% if user_text %}
-        <p>You described: "{{ user_text }}"</p>
-        {% endif %}
-      </div>
-    </div>
+    <button type="submit" id="detectBtn">Go to Empower</button>
   </form>
+
+  <div id="result" aria-live="polite" role="region">
+    <h2>Selected Emotion: <span id="detectedEmotion">{{ detected_emotion or "None" }}</span></h2>
+    {% if user_text %}
+      <p>You described: "{{ user_text }}"</p>
+    {% endif %}
+  </div>
 
   <script src="{{ url_for('static', filename='explore.js') }}"></script>
 </body>

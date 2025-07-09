@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Empower Phase</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='empower.css') }}" />
+</head>
+<body class="welcome-bg">
+
+  <div class="container">
+    <h1>🌈 Empower Phase</h1>
+
+    <p class="tagline">
+      <span class="soft-blue">acknowledge</span>
+      <span class="soft-pink">your strength</span>
+      <span class="soft-green">and feel</span>
+      <span class="soft-purple">empowered</span>
+    </p>
+
+    <section class="summary">
+      <h2>Your Emotion: <span class="emotion-highlight">{{ emotion }}</span></h2>
+      <p class="user-text">You shared: "{{ text }}"</p>
+    </section>
+
+    <section class="empowerment-message">
+      <h3>Gentle guidance just for you:</h3>
+      <ul>
+        <li>🌿 Embrace your emotion — it's a valid part of your journey.</li>
+        <li>💖 Speak kindly to yourself. Healing starts within.</li>
+        <li>🧘 Take a breath. You are here, and that matters.</li>
+        <li>📖 Reflect or journal how this moment feels.</li>
+        <li>🌟 When you're ready, move forward at your pace.</li>
+      </ul>
+    </section>
+
+    <section class="action">
+      <a href="{{ url_for('index') }}" class="button">Start Over</a>
+      <a href="{{ url_for('explore') }}" class="button secondary">Back to Explore</a>
+    </section>
+  </div>
+
+  <script src="{{ url_for('static', filename='empower.js') }}"></script>
+</body>
+</html>

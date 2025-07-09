@@ -11,10 +11,6 @@ with open('tfidf_vectorizer.pkl', 'rb') as f:
     vectorizer = pickle.load(f)
 
 @app.route('/')
-def welcome():
-    return render_template('welcome.html')
-
-@app.route('/welcome')
 def index():
     return render_template('index.html')
 
@@ -30,19 +26,23 @@ def relax():
                            emotion=predicted_emotion,
                            mood=selected_mood)
 
+from flask import redirect, url_for
+
 @app.route('/explore', methods=['GET', 'POST'])
 def explore():
-    predicted_emotion = None
-    user_input = ''
     if request.method == 'POST':
         user_input = request.form.get('user_input', '').strip()
-        if user_input:
-            vector = vectorizer.transform([user_input])
-            predicted_emotion = model.predict(vector)[0]
-    
-    return render_template('explore.html',
-                           detected_emotion=predicted_emotion,
-                           user_text=user_input)
+        selected_emotion = request.form.get('selected_emotion', '').strip()
+        # Redirect to empower with query params in URL
+        return redirect(url_for('empower', emotion=selected_emotion, text=user_input))
+    return render_template('explore.html', detected_emotion=None, user_text='')
+
+@app.route('/empower')
+def empower():
+    emotion = request.args.get('emotion', 'None')
+    text = request.args.get('text', '')
+    return render_template('empower.html', emotion=emotion, text=text)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

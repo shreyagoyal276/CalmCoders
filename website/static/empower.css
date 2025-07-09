@@ -1,0 +1,168 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+  background-size: cover;
+  overflow-x: hidden;
+  color: #2c3e50;
+  position: relative;
+}
+
+/* Glow animation */
+@keyframes floatGlow {
+  0%, 100% { transform: translateY(0); text-shadow: 0 0 10px #6c63ff; }
+  50% { transform: translateY(-5px); text-shadow: 0 0 20px #6c63ff; }
+}
+
+/* @keyframes softBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+} */
+
+/* Background lighting pulse */
+body::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent 50%),
+              radial-gradient(circle at 70% 70%, rgba(255,255,255,0.1), transparent 50%);
+  animation: softPulse 10s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes softPulse {
+  0%   { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.05); opacity: 0.6; }
+}
+
+/* Container */
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+/* Header */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+  animation: floatGlow 3s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+/* Tagline styling */
+.tagline {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+  animation: softBlink 2s infinite;
+}
+
+.soft-blue   { color: #2995ed; }
+.soft-green  { color: #3ce94e; }
+.soft-pink   { color: #ed587d; }
+.soft-purple { color: #da22fa; }
+
+/* Summary Box */
+.summary {
+  background: rgba(230, 244, 255, 0.6);
+  padding: 20px;
+  border-left: 6px solid #4a90e2;
+  border-radius: 12px;
+  margin: 20px 0;
+  color: #1e293b;
+}
+
+.emotion-highlight {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #2563eb;
+  text-transform: capitalize;
+}
+
+.user-text {
+  font-style: italic;
+  color: #475569;
+  margin-top: 10px;
+}
+
+/* Empowerment Message */
+.empowerment-message {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+}
+
+.empowerment-message ul {
+  list-style: disc;
+  padding-left: 1.2rem;
+  line-height: 1.7;
+  color: #334155;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  background-color: #463ede;
+  color: white;
+  padding: 12px 24px;
+  margin: 15px 10px 0 10px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.button:hover {
+  background-color: #574fd6;
+  box-shadow: 0 0 12px #a4a3ff;
+  transform: translateY(-2px);
+}
+
+.button.secondary {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.button.secondary:hover {
+  background-color: #bfdbfe;
+}
+
+/* Breathing Circle for Calmness */
+#breathCircle {
+  width: 100px;
+  height: 100px;
+  margin: 30px auto;
+  background: radial-gradient(circle, rgba(0, 123, 255, 0.3), rgba(0, 123, 255, 0.1));
+  border-radius: 50%;
+  animation: breathe 6s ease-in-out infinite;
+  box-shadow: 0 0 30px rgba(0, 123, 255, 0.3);
+}
+
+@keyframes breathe {
+  0%   { transform: scale(1); opacity: 0.6; }
+  50%  { transform: scale(1.5); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
