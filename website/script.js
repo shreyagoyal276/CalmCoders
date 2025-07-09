@@ -53,6 +53,31 @@ function displayQuoteAnimated(text) {
   });
 }
 
+function askToContinueBreathing(onContinue, onSkip) {
+  const modal = document.createElement("div");
+  modal.classList.add("modal-overlay");
+  modal.innerHTML = `
+    <div class="modal-box">
+      <p>Would you like to continue the breathing session?</p>
+      <div class="modal-buttons">
+        <button id="continueBtn">Continue</button>
+        <button id="skipBtn">Skip to Relaxation</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  document.getElementById("continueBtn").addEventListener("click", () => {
+    modal.remove();
+    onContinue();
+  });
+
+  document.getElementById("skipBtn").addEventListener("click", () => {
+    modal.remove();
+    onSkip();
+  });
+}
+
 
 function askForBodyScan() {
   const confirmBox = document.createElement("div");
@@ -112,5 +137,17 @@ dumpBtn.addEventListener("click", () => {
         askForBodyScan(); 
       }
     }, 3000);
-  }, 1000);
+   
+    setTimeout(() => {
+      askToContinueBreathing(
+        () => {
+          // Continue breathing – do nothing
+        },
+        () => {
+          clearInterval(breatheInterval);
+          window.location.href = "relax.html";
+        }
+      );
+    }, 5000);
+}, 1000);
 });
