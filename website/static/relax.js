@@ -30,7 +30,6 @@ let index = 0;
 bgMusic.volume = 0.3;
 bgMusic.play();
 
-
 function speakText(text) {
   const synth = window.speechSynthesis;
   const utterance = new SpeechSynthesisUtterance(text);
@@ -62,31 +61,37 @@ if (speechSynthesis.getVoices().length === 0) {
   showStep();
 }
 
+let stepTimeout, skipTimeout;
+
 function showStep() {
   if (index < relaxSteps.length) {
     const step = relaxSteps[index];
     relaxText.textContent = step;
     speakText(step);
     index++;
-    setTimeout(showStep, 12000);
-  } else {
-    relaxText.textContent += "\n\n🌈 Session Complete. Take your time.";
-    speakText("Your relaxation session is complete. Would you like to start again?");
-    askRestart();
-  }
-}
 
-function askRestart() {
-  setTimeout(() => {
-    const again = confirm("Would you like to start the relaxation again?");
-    if (again) {
-      index = 0;
+    // After 10 seconds ask if user wants to skip
+    skipTimeout = setTimeout(() => {
+      const skip = confirm("Do you want to skip to the next relaxation step?");
+      if (skip) {
+        clearTimeout(stepTimeout);
+        showStep();
+      }
+    }, 10000);
+
+    // Automatically proceed to next step after 12 seconds
+    stepTimeout = setTimeout(() => {
+      clearTimeout(skipTimeout);
       showStep();
-    } else {
-      const goodbye = "Take this peace with you. You are strong. You are loved. 🌟";
-      relaxText.textContent = goodbye;
-      speakText(goodbye);
-      bgMusic.pause();
-    }
-  }, 3000);
+    }, 12000);
+
+  } else {
+    relaxText.textContent += "\n\n🌈 Session Complete. Redirecting to Explore phase...";
+    speakText("Your relaxation session is complete. Redirecting you to the explore phase.");
+    bgMusic.pause();
+
+    setTimeout(() => {
+      window.location.href = "/explore";
+    }, 4000);
+  }
 }

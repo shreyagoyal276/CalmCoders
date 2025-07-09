@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  h1 {
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+  }
+  
+  #emotionWheel {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    margin-bottom: 20px;
+    user-select: none;
+  }
+  
+  .emotionSegment {
+    background: #b3d4fc;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+    padding: 10px;
+    text-align: center;
+    user-select: none;
+  }
+  
+  .emotionSegment:hover, .emotionSegment.selected {
+    background: #4a90e2;
+    color: white;
+  }
+  
+  #promptArea {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 10px;
+  }
+  
+  #promptArea textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: vertical;
+  }
+  
+  #detectBtn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+  }
+  
+  #detectBtn:hover {
+    background-color: #357abd;
+  }
+  
+  #result {
+    max-width: 600px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  }
+  
+  #result h2 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  #detectedEmotion {
+    font-weight: 700;
+    color: #4a90e2;
+  }
+  

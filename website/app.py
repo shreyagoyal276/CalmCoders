@@ -3,7 +3,7 @@ import pickle
 
 app = Flask(__name__)
 
-# Load the trained ML model and vectorizer
+# Load ML model and vectorizer once
 with open('emotion_model.pkl', 'rb') as f:
     model = pickle.load(f)
 
@@ -16,21 +16,29 @@ def index():
 
 @app.route('/relax', methods=['POST'])
 def relax():
-    # Get user input
     user_input = request.form['user_input']
-    
-    # Get selected mood from hidden input (optional)
-    selected_mood = request.form.get('selected_mood', 'rain')  # default = rain
-
-    # Predict emotion using ML model
+    selected_mood = request.form.get('selected_mood', 'rain')
     vector = vectorizer.transform([user_input])
     predicted_emotion = model.predict(vector)[0]
 
-    # Pass everything to relax.html
     return render_template('relax.html',
                            text=user_input,
                            emotion=predicted_emotion,
                            mood=selected_mood)
+
+@app.route('/explore', methods=['GET', 'POST'])
+def explore():
+    predicted_emotion = None
+    user_input = ''
+    if request.method == 'POST':
+        user_input = request.form.get('user_input', '').strip()
+        if user_input:
+            vector = vectorizer.transform([user_input])
+            predicted_emotion = model.predict(vector)[0]
+    
+    return render_template('explore.html',
+                           detected_emotion=predicted_emotion,
+                           user_text=user_input)
 
 if __name__ == '__main__':
     app.run(debug=True)
