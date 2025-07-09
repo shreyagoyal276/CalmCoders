@@ -62,6 +62,7 @@ if (speechSynthesis.getVoices().length === 0) {
 }
 
 let stepTimeout;
+let skipPromptShown = false;
 
 function showStep() {
   if (index < relaxSteps.length) {
@@ -70,7 +71,9 @@ function showStep() {
     speakText(step);
     index++;
 
-    if (index === 1) {
+    // Show skip prompt only once at step 1
+    if (index === 1 && !skipPromptShown) {
+      skipPromptShown = true; // mark as shown
       setTimeout(() => {
         const skip = confirm("Do you want to skip the relaxation session and go directly to exploration?");
         if (skip) {
@@ -82,7 +85,6 @@ function showStep() {
       }, 10000);
     }
 
-  
     stepTimeout = setTimeout(() => {
       showStep();
     }, 12000);
