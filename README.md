@@ -66,7 +66,5 @@ In today's fast-paced digital world, many individuals — especially students an
 
 ---
 
-## 📌 Status
-🚧 Currently under development – Core structure, UI, and NLP logic in progress.
 
 
