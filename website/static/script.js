@@ -15,12 +15,13 @@ const moodAudio = {
 };
 
 let selectedMood = "rain"; 
-
+const hiddenMoodInput = document.getElementById("selectedMoodInput");
 moodButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     moodButtons.forEach(b => b.classList.remove("selected"));
     btn.classList.add("selected");
     selectedMood = btn.dataset.mood;
+    hiddenMoodInput.value = selectedMood;
   });
 });
 
@@ -75,6 +76,7 @@ function askToContinueBreathing(onContinue, onSkip) {
   document.getElementById("skipBtn").addEventListener("click", () => {
     modal.remove();
     onSkip();
+    document.querySelector("form").submit();
   });
 }
 

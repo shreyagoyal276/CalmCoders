@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MindDump - Clear Your Mind</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <div class="container-wrapper">
@@ -14,17 +14,21 @@
       <h1>🧠 MindDump</h1>
       <p class="tagline">Write it. Dump it. Breathe.</p>
 
-      <textarea id="thoughtInput" placeholder="Write your thoughts here..."></textarea>
 
-      <div id="moodSelector">
-        <button class="mood-btn selected" data-mood="rain" title="Rain">🌧️</button>
-        <button class="mood-btn" data-mood="fireplace" title="Fireplace">🔥</button>
-        <button class="mood-btn" data-mood="forest" title="Forest">🌿</button>
-      </div>
-      <p id="auraText">Select the aura you want to feel relaxed</p>
+      <form action="/relax" method="POST">
+        <textarea id="thoughtInput" name="user_input" placeholder="Write your thoughts here..."></textarea>
 
-      <button id="dumpBtn">Dump It</button>
+        <div id="moodSelector">
+          <button type="button" class="mood-btn selected" data-mood="rain" title="Rain">🌧️</button>
+          <button class="mood-btn" type="button" data-mood="fireplace" title="Fireplace">🔥</button>
+          <button class="mood-btn" type="button" data-mood="forest" title="Forest">🌿</button>
+        </div>
+        <p id="auraText">Select the aura you want to feel relaxed</p>
+        <input type="hidden" name="selected_mood" id="selectedMoodInput" value="rain">
 
+        <button id="dumpBtn" type="button">Dump It</button>
+      </form>
+      
       <div id="output" class="hidden">
         <div id="breathCircle"></div>
         <p id="breatheText" style="font-size: 1.2rem; color: #007bff;"></p>
@@ -32,6 +36,7 @@
         <p id="quote"></p>
         <p style="color: white; font-size: 1.2rem; margin-top: 1rem;">Breathe with the circle...</p>
       </div>
+
 
       <div id="bodyScan" class="hidden">
         <p class="cleared" style="margin-bottom: 1rem;">Now, let’s try a short body scan 🧘‍♀️</p>
@@ -51,6 +56,7 @@
     ></iframe>
   </div>
 
-  <script src="script.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
 </body>
 </html>
