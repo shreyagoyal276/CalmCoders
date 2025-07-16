@@ -61,7 +61,8 @@ if (speechSynthesis.getVoices().length === 0) {
   showStep();
 }
 
-let stepTimeout, skipTimeout;
+let stepTimeout;
+let skipPromptShown = false;
 
 function showStep() {
   if (index < relaxSteps.length) {
@@ -70,18 +71,21 @@ function showStep() {
     speakText(step);
     index++;
 
-    // After 10 seconds ask if user wants to skip
-    skipTimeout = setTimeout(() => {
-      const skip = confirm("Do you want to skip to the next relaxation step?");
-      if (skip) {
-        clearTimeout(stepTimeout);
-        showStep();
-      }
-    }, 10000);
+    // Show skip prompt only once at step 1
+    if (index === 1 && !skipPromptShown) {
+      skipPromptShown = true; // mark as shown
+      setTimeout(() => {
+        const skip = confirm("Do you want to skip the relaxation session and go directly to exploration?");
+        if (skip) {
+          bgMusic.pause();
+          speakText("Redirecting you to the explore phase.");
+          window.location.href = "/explore";
+          return;
+        }
+      }, 10000);
+    }
 
-    // Automatically proceed to next step after 12 seconds
     stepTimeout = setTimeout(() => {
-      clearTimeout(skipTimeout);
       showStep();
     }, 12000);
 

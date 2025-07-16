@@ -7,6 +7,8 @@ const breatheText = document.getElementById("breatheText");
 const moodSelector = document.getElementById("moodSelector");
 const moodButtons = document.querySelectorAll(".mood-btn");
 const auraText = document.getElementById("auraText");
+let userChoseToContinue = false;
+let bodyScanDecisionMade = false;
 
 const moodAudio = {
   rain: "cljv53Wvnx4",
@@ -53,7 +55,6 @@ function displayQuoteAnimated(text) {
     quote.appendChild(span);
   });
 }
-
 function askToContinueBreathing(onContinue, onSkip) {
   const modal = document.createElement("div");
   modal.classList.add("modal-overlay");
@@ -68,17 +69,54 @@ function askToContinueBreathing(onContinue, onSkip) {
   `;
   document.body.appendChild(modal);
 
+  const doSkip = () => {
+    modal.remove();
+    onSkip();
+    document.querySelector("form").submit(); // submit to /relax
+  };
+
   document.getElementById("continueBtn").addEventListener("click", () => {
     modal.remove();
     onContinue();
+
+    // After breathing session timeout, perform skip action automatically
+    setTimeout(() => {
+      doSkip();
+    }, 30000); // Adjust timeout duration to your breathing session length
   });
 
-  document.getElementById("skipBtn").addEventListener("click", () => {
-    modal.remove();
-    onSkip();
-    document.querySelector("form").submit();
-  });
+  document.getElementById("skipBtn").addEventListener("click", doSkip);
 }
+
+// function askToContinueBreathing(onContinue, onSkip) {
+//   const modal = document.createElement("div");
+//   modal.classList.add("modal-overlay");
+//   modal.innerHTML = `
+//     <div class="modal-box">
+//       <p>Would you like to continue the breathing session?</p>
+//       <div class="modal-buttons">
+//         <button id="continueBtn">Continue</button>
+//         <button id="skipBtn">Skip to Relaxation</button>
+//       </div>
+//     </div>
+//   `;
+//   document.body.appendChild(modal);
+
+//   document.getElementById("continueBtn").addEventListener("click", () => {
+//     modal.remove();
+
+//     // Let user continue breathing — after completion, redirect to /relax
+//     setTimeout(() => {
+//       window.location.href = "/relax";
+//     }, 10000); // Adjust timing to match the remaining breathing duration
+//   });
+
+//   document.getElementById("skipBtn").addEventListener("click", () => {
+//     modal.remove();
+//     onSkip();
+//     document.querySelector("form").submit();
+//   });
+// }
 
 
 function askForBodyScan() {
