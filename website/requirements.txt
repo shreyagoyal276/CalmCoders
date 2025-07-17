@@ -1,2 +1,5 @@
 Flask==3.1.1
 gunicorn==21.2.0
+requests
+pickle5
+scikit-learn
