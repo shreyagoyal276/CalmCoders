@@ -3,7 +3,12 @@
 **Mind Dump** is a digital mental wellness platform developed for HackOrbit 2025 under the theme *Health Care Tech*. It helps users release emotional stress, explore their feelings, and empower themselves - all in a private, non-judgmental environment.
 
 ---
+## 🚀 Live Demo
 
+Check out the live version of the project here:  
+🔗 [Deployed Link](https://minddump-jbfh.onrender.com/)
+
+---
 ## 🌐 Problem Statement
 
 In today's fast-paced digital world, many individuals - especially students and young professionals - face overwhelming thoughts, anxiety, and emotional burnout. Yet, there is a lack of accessible, private, and non-clinical tech-based tools to help them safely process emotions and regain mental calm.
